@@ -7,12 +7,30 @@ window.onload = () => {
     let time = document.querySelector(`#time`);
     let duration = document.querySelector(`#duration`);
     let audioProgressBar = document.querySelector(`#progress`);
+    let volumeDown = document.querySelector(`.fas.fa-volume-down`);
+    let volumeUp = document.querySelector(`.fas.fa-volume-up`);
 
     /*
         Initialize the <source> tag’s src attribute with the first value in the drop
         down list. This value is the path to an audio file.
     */
     sourceElement.src = select.value;
+
+//lower volume by 0.1
+    let volumeDecrease = () => {
+        if (audioElement.volume > 0) {
+            audioElement.volume -= 0.1;
+        }
+    }
+
+//raise volume by 0.1
+    let volumeIncrease = () => {
+        if (audioElement.volume < 1) {
+            audioElement.volume += 0.1;
+        }
+    }
+
+
 
     let playPauseAudio = () => {
         "use strict";
@@ -54,6 +72,15 @@ window.onload = () => {
         audioProgressBar.setAttribute(`value`, audioElement.currentTime);
         time.textContent = `${minutes}:${seconds}`;
     };
+
+//connect function to button?
+    volumeDown.addEventListener(`click`, () => {
+        volumeDecrease();
+    }, false);
+
+    volumeUp.addEventListener(`click`, () => {
+        volumeIncrease();
+    }, false);
 
     select.addEventListener(`change`, () => {
         sourceElement.src = select.value;
