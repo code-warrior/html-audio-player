@@ -68,10 +68,7 @@ window.onload = () => {
     let fastForwardAudio = () => {
         "use strict";
 
-        let minutes = Math.floor(audioElement.duration / 60);
-        let seconds = Math.floor(audioElement.duration - minutes * 60);
-
-        if (seconds <= (audioElement.duration - 3)) {
+        if ((audioElement.duration - audioElement.currentTime) > 3) {
             audioElement.currentTime += 3;
         }
     };
