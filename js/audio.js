@@ -18,12 +18,16 @@ window.onload = () => {
     sourceElement.src = select.value;
 
     let volumeDecrease = () => {
+        "use strict";
+
         if (audioElement.volume > 0) {
             audioElement.volume -= 0.1;
         }
     };
 
     let volumeIncrease = () => {
+        "use strict";
+
         if (audioElement.volume < 1) {
             audioElement.volume += 0.1;
         }
@@ -53,6 +57,8 @@ window.onload = () => {
     };
 
     let rewindAudio = () => {
+        "use strict";
+
         let minutes = Math.floor(audioElement.currentTime / 60);
         let seconds = Math.floor(audioElement.currentTime - minutes * 60);
 
