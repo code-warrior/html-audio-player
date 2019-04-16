@@ -113,7 +113,6 @@ window.onload = () => {
         audioElement.play();
     }, false);
 
-    console.log(fast);
 
     fast.addEventListener(`click`, () =>{
         let minutes = Math.floor(audioElement.duration / 60);
