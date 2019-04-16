@@ -7,6 +7,7 @@ window.onload = () => {
     let time = document.querySelector(`#time`);
     let duration = document.querySelector(`#duration`);
     let audioProgressBar = document.querySelector(`#progress`);
+    let rewind = document.querySelector(`.fas.fa-backward`)
 
     /*
         Initialize the <source> tag’s src attribute with the first value in the drop
@@ -37,6 +38,14 @@ window.onload = () => {
         play.classList.add(`fa-play`);
     };
 
+    let rewindAudio = () => {
+        let minutes = Math.floor(audioElement.currentTime / 60);
+        let seconds = Math.floor(audioElement.currentTime - minutes * 60);
+
+        if (seconds > 3) {
+            audioElement.currentTime -= 3;
+        }
+    }
     let setTime = () => {
         "use strict";
 
@@ -93,6 +102,10 @@ window.onload = () => {
 
     stop.addEventListener(`click`, () => {
         stopAudio();
+    }, false);
+
+    rewind.addEventListener(`click`, () => {
+        rewindAudio();
     }, false);
 
     audioElement.load();
