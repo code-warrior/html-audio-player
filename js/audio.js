@@ -5,6 +5,7 @@ window.onload = () => {
     let play = document.querySelector(`#controls > span:nth-child(4)`);
     let stop = document.querySelector(`.fas.fa-stop`);
     let time = document.querySelector(`#time`);
+    let fastForward = document.querySelector(`.fas.fa-forward`);
     let duration = document.querySelector(`#duration`);
     let audioProgressBar = document.querySelector(`#progress`);
     let volumeDown = document.querySelector(`.fas.fa-volume-down`);
@@ -59,11 +60,16 @@ window.onload = () => {
     let rewindAudio = () => {
         "use strict";
 
-        let minutes = Math.floor(audioElement.currentTime / 60);
-        let seconds = Math.floor(audioElement.currentTime - minutes * 60);
-
-        if (seconds > 3) {
+        if (audioElement.currentTime > 3) {
             audioElement.currentTime -= 3;
+        }
+    };
+
+    let fastForwardAudio = () => {
+        "use strict";
+
+        if ((audioElement.duration - audioElement.currentTime) > 3) {
+            audioElement.currentTime += 3;
         }
     };
 
@@ -135,6 +141,10 @@ window.onload = () => {
 
     rewind.addEventListener(`click`, () => {
         rewindAudio();
+    }, false);
+
+    fastForward.addEventListener(`click`, () => {
+        fastForwardAudio();
     }, false);
 
     audioElement.load();
