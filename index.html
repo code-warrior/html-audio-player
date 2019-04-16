@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <title>HTML Audio Player</title>
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+   <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   <div id="container">
+      <!-- /* https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Video_and_audio_APIs */ -->
+      <header>
+         <h1>HTML Audio Player</h1>
+      </header>
+      <main>
+         <form>
+            <label title="Audio file chooser." for="audio-file"><span class="fas fa-file-audio"></span>
+               <select id="audio-file">
+                  <option value="audio/01 Don_t Stop (7 May 2009).mp3">A</option>
+                  <option value="audio/01 Heat (The Hyper-Stereo Drum Mix).mp3">B</option>
+                  <option value="audio/01 Ten Years Late (04122009-1124).mp3">C</option>
+                  <option value="audio/01 Waiting.mp3">D</option>
+                  <option value="audio/01 x0x0x0 (-3 dB Gain Reduction Master).mp3">E</option>
+               </select>
+            </label>
+         </form>
+         <progress id="progress" value="0" max="100"></progress>
+         <p><span id="time"></span> / <span id="duration"></span></p>
+         <hr>
+         <div id="audio-container">
+            <audio preload>
+               <source src="">
+            </audio>
+            <div>
+               <div id="controls">
+                  <span class="fas fa-step-backward"></span>
+                  <span class="fas fa-backward"></span>
+                  <span class="fas fa-stop"></span>
+                  <span class="fas fa-play"></span>
+                  <span class="fas fa-forward"></span>
+                  <span class="fas fa-step-forward"></span>
+
+                  <div id="volume">
+                     <!-- <span class="fas fa-volume-off"></span>-->
+                     <!-- <span class="fas fa-volume-mute"></span>-->
+                     <span class="fas fa-volume-down"></span>
+                     <span class="fas fa-volume-up"></span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </main>
+   </div>
+   <script src="js/audio.js"></script>
+   </body>
+</html>
