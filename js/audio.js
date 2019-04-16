@@ -107,15 +107,6 @@ window.onload = () => {
         audioElement.play();
     }, false);
 
-    fastForward.addEventListener(`click`, () => {
-        let minutes = Math.floor(audioElement.duration / 60);
-        let seconds = Math.floor(audioElement.duration - minutes * 60);
-
-        if (seconds <= (audioElement.duration - 3)) {
-            audioElement.currentTime += 3;
-        }
-    });
-
     audioElement.onloadedmetadata = () => {
         let minutes = Math.floor(audioElement.duration / 60);
         let seconds = Math.floor(audioElement.duration - minutes * 60);
