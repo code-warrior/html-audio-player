@@ -17,14 +17,12 @@ window.onload = () => {
     */
     sourceElement.src = select.value;
 
-//lower volume by 0.1
     let volumeDecrease = () => {
         if (audioElement.volume > 0) {
             audioElement.volume -= 0.1;
         }
     };
 
-//raise volume by 0.1
     let volumeIncrease = () => {
         if (audioElement.volume < 1) {
             audioElement.volume += 0.1;
@@ -81,7 +79,6 @@ window.onload = () => {
         time.textContent = `${minutes}:${seconds}`;
     };
 
-//connect function to button?
     volumeDown.addEventListener(`click`, () => {
         volumeDecrease();
     }, false);
