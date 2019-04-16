@@ -9,7 +9,7 @@ window.onload = () => {
     let audioProgressBar = document.querySelector(`#progress`);
     let volumeDown = document.querySelector(`.fas.fa-volume-down`);
     let volumeUp = document.querySelector(`.fas.fa-volume-up`);
-    let rewind = document.querySelector(`.fas.fa-backward`)
+    let rewind = document.querySelector(`.fas.fa-backward`);
 
     /*
         Initialize the <source> tag’s src attribute with the first value in the drop
@@ -22,16 +22,14 @@ window.onload = () => {
         if (audioElement.volume > 0) {
             audioElement.volume -= 0.1;
         }
-    }
+    };
 
 //raise volume by 0.1
     let volumeIncrease = () => {
         if (audioElement.volume < 1) {
             audioElement.volume += 0.1;
         }
-    }
-
-
+    };
 
     let playPauseAudio = () => {
         "use strict";
@@ -63,7 +61,8 @@ window.onload = () => {
         if (seconds > 3) {
             audioElement.currentTime -= 3;
         }
-    }
+    };
+
     let setTime = () => {
         "use strict";
 
