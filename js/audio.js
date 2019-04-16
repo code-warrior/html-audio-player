@@ -41,8 +41,8 @@ window.onload = () => {
     let rewindAudio = () => {
         let minutes = Math.floor(audioElement.currentTime / 60);
         let seconds = Math.floor(audioElement.currentTime - minutes * 60);
-        
-        if(seconds > 3){
+
+        if (seconds > 3) {
             audioElement.currentTime -= 3;
         }
     }
