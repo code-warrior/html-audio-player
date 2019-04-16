@@ -5,6 +5,7 @@ window.onload = () => {
     let play = document.querySelector(`#controls > span:nth-child(4)`);
     let stop = document.querySelector(`.fas.fa-stop`);
     let time = document.querySelector(`#time`);
+    let fast = document.querySelector(`.fas.fa-forward`);
     let duration = document.querySelector(`#duration`);
     let audioProgressBar = document.querySelector(`#progress`);
 
@@ -55,6 +56,8 @@ window.onload = () => {
         time.textContent = `${minutes}:${seconds}`;
     };
 
+
+
     select.addEventListener(`change`, () => {
         sourceElement.src = select.value;
         play.classList.remove(`fa-play`);
@@ -62,6 +65,17 @@ window.onload = () => {
         audioElement.load();
         audioElement.play();
     }, false);
+
+    console.log(fast);
+
+    fast.addEventListener(`click`, () =>{
+        let minutes = Math.floor(audioElement.duration / 60);
+        let seconds = Math.floor(audioElement.duration - minutes * 60);
+
+        if(seconds <= audioElement.duration-3){
+            audioElement.currentTime+=3;
+        };
+    });
 
     audioElement.onloadedmetadata = () => {
         let minutes = Math.floor(audioElement.duration / 60);
