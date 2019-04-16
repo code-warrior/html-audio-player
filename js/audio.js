@@ -5,15 +5,34 @@ window.onload = () => {
     let play = document.querySelector(`#controls > span:nth-child(4)`);
     let stop = document.querySelector(`.fas.fa-stop`);
     let time = document.querySelector(`#time`);
-    let fast = document.querySelector(`.fas.fa-forward`);
+    let fastForward = document.querySelector(`.fas.fa-forward`);
     let duration = document.querySelector(`#duration`);
     let audioProgressBar = document.querySelector(`#progress`);
+    let volumeDown = document.querySelector(`.fas.fa-volume-down`);
+    let volumeUp = document.querySelector(`.fas.fa-volume-up`);
+    let rewind = document.querySelector(`.fas.fa-backward`);
 
     /*
         Initialize the <source> tag’s src attribute with the first value in the drop
         down list. This value is the path to an audio file.
     */
     sourceElement.src = select.value;
+
+    let volumeDecrease = () => {
+        "use strict";
+
+        if (audioElement.volume > 0) {
+            audioElement.volume -= 0.1;
+        }
+    };
+
+    let volumeIncrease = () => {
+        "use strict";
+
+        if (audioElement.volume < 1) {
+            audioElement.volume += 0.1;
+        }
+    };
 
     let playPauseAudio = () => {
         "use strict";
@@ -38,6 +57,28 @@ window.onload = () => {
         play.classList.add(`fa-play`);
     };
 
+    let rewindAudio = () => {
+        "use strict";
+
+        let minutes = Math.floor(audioElement.currentTime / 60);
+        let seconds = Math.floor(audioElement.currentTime - minutes * 60);
+
+        if (seconds > 3) {
+            audioElement.currentTime -= 3;
+        }
+    };
+
+    let fastForwardAudio = () => {
+        "use strict";
+
+        let minutes = Math.floor(audioElement.duration / 60);
+        let seconds = Math.floor(audioElement.duration - minutes * 60);
+
+        if (seconds <= (audioElement.duration - 3)) {
+            audioElement.currentTime += 3;
+        }
+    };
+
     let setTime = () => {
         "use strict";
 
@@ -56,7 +97,13 @@ window.onload = () => {
         time.textContent = `${minutes}:${seconds}`;
     };
 
+    volumeDown.addEventListener(`click`, () => {
+        volumeDecrease();
+    }, false);
 
+    volumeUp.addEventListener(`click`, () => {
+        volumeIncrease();
+    }, false);
 
     select.addEventListener(`change`, () => {
         sourceElement.src = select.value;
@@ -107,6 +154,14 @@ window.onload = () => {
 
     stop.addEventListener(`click`, () => {
         stopAudio();
+    }, false);
+
+    rewind.addEventListener(`click`, () => {
+        rewindAudio();
+    }, false);
+
+    fastForward.addEventListener(`click`, () => {
+        fastForwardAudio();
     }, false);
 
     audioElement.load();
